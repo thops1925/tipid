@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import tipid from '../services/tipidSlice';
+import budgetSlice from '../services/tipidSlice';
 
 export const store = configureStore({
   reducer: {
-    budget: tipid,
+    budget: budgetSlice,
   },
 });

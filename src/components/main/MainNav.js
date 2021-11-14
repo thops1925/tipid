@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Form from './Form';
+import ViewItem from './ViewItem';
 
 function MainNav() {
   return (
@@ -15,8 +16,11 @@ function MainNav() {
           <p className="text-blue-600 text-lg font-bold">P1,000</p>
         </div>
       </div>
-      {/* <ProgressBar className="bg-gray-300" completed={completed} /> */}
+
       <Form />
+      <div className="lg:min-h-0 h-64 overflow-scroll mt-4 scrollbar-hide ">
+        <ViewItem />
+      </div>
     </div>
   );
 }
