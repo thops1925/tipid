@@ -3,16 +3,26 @@ import { createSlice } from '@reduxjs/toolkit';
 export const budgetSlice = createSlice({
   name: 'budget',
   initialState: {
-    budget: [],
     expenses: [],
   },
   reducers: {
-    addBudget(state, action) {
-      state.budget.push(action.payload);
+    addBudget: (state, action) => {
+      return { ...state, expenses: [action.payload, ...state.expenses] };
     },
 
     addExpenses: (state, action) => {
-      return { ...state, expenses: [action.payload, ...state.expenses] };
+      const newValue = {
+        ...state,
+        expenses: [action.payload, ...state.expenses],
+      };
+      return newValue;
+    },
+
+    total: (state, action) => {
+      const budget = budget;
+      const expenses = expenses.reduce((acc, curr) => acc + curr.amount, 0);
+      const total = budget - expenses;
+      return (state.total = total);
     },
 
     editBudget: (state, action) => {
@@ -34,6 +44,6 @@ export const budgetSlice = createSlice({
   },
 });
 
-export const { addExpenses, addBudget, editBudget, deleteBudget } =
+export const { addExpenses, addBudget, editBudget, deleteBudget, total } =
   budgetSlice.actions;
 export default budgetSlice.reducer;

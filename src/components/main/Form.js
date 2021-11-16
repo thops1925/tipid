@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBudget, addExpenses } from '../../services/tipidSlice';
+import ViewItem from './ViewItem';
 
 function Form() {
   const [toggled, setToggled] = useState(false);
@@ -9,6 +10,7 @@ function Form() {
     amount: '',
     description: '',
   });
+
   const [budget, setBudget] = useState({
     amount: '',
   });
@@ -29,7 +31,7 @@ function Form() {
         <form
           className="space-y-2"
           onKeyPress={(e) => {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' && budget.amount !== '') {
               e.preventDefault();
               dispatch(addBudget(budget));
               setBudget({
@@ -44,45 +46,58 @@ function Form() {
               className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
               placeholder="Amount"
               onChange={(e) => setBudget({ ...budget, amount: e.target.value })}
+              required
               value={budget.amount}
             />
           </div>
         </form>
       ) : (
-        <form
-          className="space-y-2"
-          onKeyPress={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              dispatch(addExpenses(value));
-              setValue({
-                amount: '',
-                description: '',
-              });
-            }
-          }}
-        >
-          <div className="flex space-x-4 h-14">
-            <input
-              type="text"
-              className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
-              placeholder="Amount"
-              onChange={(e) => setValue({ ...value, amount: e.target.value })}
-              value={value.amount}
-            />
-          </div>
-          <div className="flex space-x-4 h-14">
-            <input
-              type="text"
-              className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
-              placeholder="Say buhaton nimo sa kwarta mii"
-              onChange={(e) =>
-                setValue({ ...value, description: e.target.value })
+        <>
+          <form
+            className="space-y-2"
+            onKeyPress={(e) => {
+              if (
+                e.key === 'Enter' &&
+                value.amount !== '' &&
+                value.description !== ''
+              ) {
+                e.preventDefault();
+                dispatch(addExpenses(value));
+                setValue({
+                  amount: '',
+                  description: '',
+                });
               }
-              value={value.description}
-            />
+            }}
+          >
+            <div className="flex space-x-4 h-14">
+              <input
+                type="text"
+                className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
+                placeholder="Amount"
+                required
+                onChange={(e) => setValue({ ...value, amount: e.target.value })}
+                value={value.amount}
+              />
+            </div>
+            <div className="flex space-x-4 h-14">
+              <input
+                type="text"
+                required
+                className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
+                placeholder="Say buhaton nimo sa kwarta mii"
+                onChange={(e) =>
+                  setValue({ ...value, description: e.target.value })
+                }
+                value={value.description}
+              />
+            </div>
+          </form>
+
+          <div className="lg:min-h-0 h-64 overflow-scroll mt-4 scrollbar-hide ">
+            <ViewItem />
           </div>
-        </form>
+        </>
       )}
     </div>
   );

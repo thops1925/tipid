@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Form from './Form';
-import ViewItem from './ViewItem';
 
 function MainNav() {
+  const dispatch = useDispatch();
+  const item = useSelector((state) => state.budget);
+  // useEffect(() => {
+  //   dispatch(item);
+  // }, [item]);
+
+  // const total = item.budget.reduce(
+  //   (acc, curr) => (acc += Math.round(curr.amount)),
+  //   0,
+  // );
+
+  // console.log(total);
+
   return (
     <div className="px-8 py-12 mx-auto sm:max-w-lg">
       <div className="flex justify-center py-4 border-b-2">
@@ -13,14 +26,13 @@ function MainNav() {
 
         <div className="flex justify-between">
           <p className="text-gray-500">Total Balance</p>
-          <p className="text-blue-600 text-lg font-bold">P1,000</p>
+          <p className="text-blue-600 text-lg font-bold">
+            {/* {total.toLocaleString()} */}
+          </p>
         </div>
       </div>
 
       <Form />
-      <div className="lg:min-h-0 h-64 overflow-scroll mt-4 scrollbar-hide ">
-        <ViewItem />
-      </div>
     </div>
   );
 }
