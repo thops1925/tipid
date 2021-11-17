@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBudget, addExpenses } from '../../services/tipidSlice';
 import ViewItem from './ViewItem';
+import uuid from 'react-uuid';
+import { useSelector } from 'react-redux';
 
 function Form() {
   const [toggled, setToggled] = useState(false);
   const dispatch = useDispatch();
   const [value, setValue] = useState({
+    id: uuid(),
     amount: '',
     description: '',
   });
 
   const [budget, setBudget] = useState({
+    id: uuid(),
     amount: '',
   });
+
+  const item = useSelector((state) => state.budget.expenses);
 
   return (
     <div>
@@ -42,7 +48,7 @@ function Form() {
         >
           <div className="flex space-x-4 h-14">
             <input
-              type="text"
+              type="number"
               className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
               placeholder="Amount"
               onChange={(e) => setBudget({ ...budget, amount: e.target.value })}
@@ -72,7 +78,7 @@ function Form() {
           >
             <div className="flex space-x-4 h-14">
               <input
-                type="text"
+                type="number"
                 className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
                 placeholder="Amount"
                 required
@@ -95,7 +101,15 @@ function Form() {
           </form>
 
           <div className="lg:min-h-0 h-64 overflow-scroll mt-4 scrollbar-hide ">
-            <ViewItem />
+            {item.map((expense) => (
+              <>
+                <ViewItem
+                  id={expense.id}
+                  amount={expense.amount}
+                  description={expense.description}
+                />
+              </>
+            ))}
           </div>
         </>
       )}
