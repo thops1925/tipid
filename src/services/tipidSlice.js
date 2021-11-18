@@ -4,26 +4,14 @@ export const budgetSlice = createSlice({
   name: 'budget',
   initialState: {
     expenses: [],
-    budget: [],
   },
   reducers: {
     addBudget: (state, action) => {
-      return { ...state, budget: [action.payload, ...state.budget] };
+      return { ...state, expenses: [action.payload, ...state.expenses] };
     },
 
     addExpenses: (state, action) => {
-      const newValue = {
-        ...state,
-        expenses: [action.payload, ...state.expenses],
-      };
-      return newValue;
-    },
-
-    total: (state, action) => {
-      const budget = budget;
-      const expenses = expenses.reduce((acc, curr) => acc + curr.amount, 0);
-      const total = budget - expenses;
-      return (state.total = total);
+      return { ...state, expenses: [action.payload, ...state.expenses] };
     },
 
     editBudget: (state, action) => {
