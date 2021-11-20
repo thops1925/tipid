@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Form from './Form';
 
 function MainNav() {
-  const expenses = useSelector((state) => state.budget.expenses);
-  const total = expenses.reduce(
-    (acc, curr) => acc + Math.round(curr.expense),
-    0,
-  );
-  const budget = expenses.reduce(
-    (acc, curr) => acc + Math.round(curr.budget),
-    0,
-  );
+  // const expenses = useSelector((state) => state.budget.expenses);
+  // const bud = useSelector((state) => state.budget.budget);
+
+  // const total = expenses.reduce(
+  //   (acc, curr) => acc + Math.round(curr.expense),
+  //   0,
+  // );
+  // const budget = bud.reduce((acc, curr) => acc + Math.round(curr.budget), 0);
+
   return (
     <div className="px-8 py-12 mx-auto sm:max-w-lg">
       <div className="flex justify-center py-4 border-b-2">
@@ -23,14 +23,14 @@ function MainNav() {
         <div className="flex justify-between">
           <p className="text-gray-500">Total Balance</p>
           <p className="text-blue-600 text-lg font-bold">
-            {budget.toLocaleString()}
+            {/* {budget.toLocaleString()} */}
           </p>
         </div>
 
         <div className="flex justify-between">
           <p className="text-gray-500">Total Expenses</p>
           <p className="text-blue-600 text-lg font-bold">
-            {total.toLocaleString()}
+            {/* {total.toLocaleString()} */}
           </p>
         </div>
       </div>

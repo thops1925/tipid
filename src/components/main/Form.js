@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBudget, addExpenses } from '../../services/tipidSlice';
 import ViewItem from './ViewItem';
@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 function Form() {
   const [toggled, setToggled] = useState(false);
   const dispatch = useDispatch();
+
   const [value, setValue] = useState({
     id: uuid(),
     expense: '',
@@ -37,7 +38,7 @@ function Form() {
         <form
           className="space-y-2"
           onKeyPress={(e) => {
-            if (e.key === 'Enter' && budget.budget !== '') {
+            if (e.key === 'Enter' && budget !== '') {
               e.preventDefault();
               dispatch(addBudget(budget));
               setBudget({
