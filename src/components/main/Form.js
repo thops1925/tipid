@@ -6,7 +6,6 @@ import uuid from 'react-uuid';
 import { useSelector } from 'react-redux';
 
 function Form() {
-  const income = useSelector((state) => state.budget.income);
   const item = useSelector((state) => state.budget.expenses);
   const [toggled, setToggled] = useState(false);
   const dispatch = useDispatch();
