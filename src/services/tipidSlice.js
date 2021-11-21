@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { toast } from 'react-toastify';
 export const budgetSlice = createSlice({
   name: 'budget',
   initialState: {
@@ -19,17 +19,20 @@ export const budgetSlice = createSlice({
       }, 0);
 
       if (total === 0) {
-        return console.log('wala budget');
+        console.log('wala budget');
+        toast.info('Please add budget first');
       }
       if (state.budget < 0) {
-        return console.log('hurot na ang budget');
+        console.log('hurot na ang budget');
+        toast.info('No Budget');
       }
 
       if (action.payload.expense > state.budget) {
-        return console.log('lapas kana sa budget');
+        console.log('lapas kana sa budget');
+        toast.info('Over Budget');
+      } else {
+        return { ...state, expenses: [action.payload, ...state.expenses] };
       }
-
-      return { ...state, expenses: [action.payload, ...state.expenses] };
     },
 
     getTotal: (state, action) => {
