@@ -15,16 +15,13 @@ function MainNav() {
   const budget = useSelector((state) => state.budget.budget);
 
   useEffect(() => {
+    dispatch(totalExpenses());
     dispatch(getTotal());
   }, [expenses, dispatch]);
 
   useEffect(() => {
     dispatch(getTotalBudget());
   }, [income, dispatch]);
-
-  useEffect(() => {
-    dispatch(totalExpenses());
-  }, [expenses, dispatch]);
 
   return (
     <div className="px-8 py-12 mx-auto sm:max-w-lg">
@@ -43,7 +40,7 @@ function MainNav() {
 
         <div className="flex justify-between">
           <p className="text-gray-500">Total Expenses</p>
-          <p className="text-blue-600 text-lg font-bold">
+          <p className="text-red-400 text-lg font-bold">
             {total.toLocaleString()}
           </p>
         </div>

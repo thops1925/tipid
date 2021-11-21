@@ -24,13 +24,18 @@ function Form() {
   return (
     <div>
       <div className="flex space-x-4 h-14">
-        <select
+        <button
           className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
-          onChange={() => setToggled(!toggled)}
+          onClick={() => setToggled(false)}
         >
-          <option>Gastos</option>
-          <option>Budget</option>
-        </select>
+          Expenses
+        </button>
+        <button
+          className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
+          onClick={() => setToggled(true)}
+        >
+          Budget
+        </button>
       </div>
 
       {toggled ? (

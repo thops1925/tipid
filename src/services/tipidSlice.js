@@ -14,6 +14,21 @@ export const budgetSlice = createSlice({
     },
 
     addExpenses: (state, action) => {
+      const total = state.income.reduce((acc, curr) => {
+        return acc + Math.round(curr.budget);
+      }, 0);
+
+      if (total === 0) {
+        return console.log('wala budget');
+      }
+      if (state.budget < 0) {
+        return console.log('hurot na ang budget');
+      }
+
+      if (action.payload.expense > state.budget) {
+        return console.log('lapas kana sa budget');
+      }
+
       return { ...state, expenses: [action.payload, ...state.expenses] };
     },
 
@@ -21,7 +36,10 @@ export const budgetSlice = createSlice({
       const exp = state.expenses.reduce((acc, curr) => {
         return acc + Math.round(curr.expense);
       }, 0);
-      const total = state.budget - exp;
+      const total =
+        state.income.reduce((acc, curr) => {
+          return acc + Math.round(curr.budget);
+        }, 0) - exp;
       return { ...state, budget: total };
     },
 
@@ -29,6 +47,7 @@ export const budgetSlice = createSlice({
       const exp = state.expenses.reduce((acc, curr) => {
         return acc + Math.round(curr.expense);
       }, 0);
+
       return { ...state, total: exp };
     },
 
@@ -37,7 +56,12 @@ export const budgetSlice = createSlice({
         return acc + Math.round(curr.budget);
       }, 0);
 
-      return { ...state, budget: inc };
+      if (state.total === 0) {
+        return { ...state, budget: inc };
+      } else {
+        const total = state.total;
+        return { ...state, budget: inc - total };
+      }
     },
 
     editBudget: (state, action) => {
