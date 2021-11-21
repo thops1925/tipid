@@ -106,7 +106,7 @@ function Form() {
               />
             </div>
           </form>
-          <div className="lg:min-h-0 h-64 overflow-scroll mt-4 scrollbar-hide ">
+          <div className="lg:min-h-0 h-72 overflow-scroll mt-4 scrollbar-hide ">
             {item?.map((expense) => (
               <>
                 <ViewItem

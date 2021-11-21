@@ -24,9 +24,9 @@ function MainNav() {
   }, [income, dispatch]);
 
   return (
-    <div className="px-8 py-12 mx-auto sm:max-w-lg">
+    <div className="px-8 py-4 mx-auto sm:max-w-lg">
       <div className="flex justify-center py-4 border-b-2">
-        <h1 className="flex font-extrabold text-2xl">Overview</h1>
+        <h1 className="flex font-extrabold text-2xl">WALDAS</h1>
       </div>
       <div className="mx-auto my-4">
         <p className="font-bold text-xl">Pag Budget Ambisyosa ta</p>
