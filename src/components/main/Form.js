@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBudget, addExpenses } from '../../services/tipidSlice';
 import ViewItem from './ViewItem';
@@ -6,6 +6,8 @@ import uuid from 'react-uuid';
 import { useSelector } from 'react-redux';
 
 function Form() {
+  const income = useSelector((state) => state.budget.income);
+  const item = useSelector((state) => state.budget.expenses);
   const [toggled, setToggled] = useState(false);
   const dispatch = useDispatch();
 
@@ -19,8 +21,6 @@ function Form() {
     id: uuid(),
     budget: '',
   });
-
-  const item = useSelector((state) => state.budget.expenses);
 
   return (
     <div>

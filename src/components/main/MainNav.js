@@ -1,16 +1,30 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getTotal,
+  getTotalBudget,
+  totalExpenses,
+} from '../../services/tipidSlice';
 import Form from './Form';
 
 function MainNav() {
-  // const expenses = useSelector((state) => state.budget.expenses);
-  // const bud = useSelector((state) => state.budget.budget);
+  const dispatch = useDispatch();
+  const income = useSelector((state) => state.budget.income);
+  const expenses = useSelector((state) => state.budget.expenses);
+  const total = useSelector((state) => state.budget.total);
+  const budget = useSelector((state) => state.budget.budget);
 
-  // const total = expenses.reduce(
-  //   (acc, curr) => acc + Math.round(curr.expense),
-  //   0,
-  // );
-  // const budget = bud.reduce((acc, curr) => acc + Math.round(curr.budget), 0);
+  useEffect(() => {
+    dispatch(getTotal());
+  }, [expenses, dispatch]);
+
+  useEffect(() => {
+    dispatch(getTotalBudget());
+  }, [income, dispatch]);
+
+  useEffect(() => {
+    dispatch(totalExpenses());
+  }, [expenses, dispatch]);
 
   return (
     <div className="px-8 py-12 mx-auto sm:max-w-lg">
@@ -23,14 +37,14 @@ function MainNav() {
         <div className="flex justify-between">
           <p className="text-gray-500">Total Balance</p>
           <p className="text-blue-600 text-lg font-bold">
-            {/* {budget.toLocaleString()} */}
+            {budget.toLocaleString()}
           </p>
         </div>
 
         <div className="flex justify-between">
           <p className="text-gray-500">Total Expenses</p>
           <p className="text-blue-600 text-lg font-bold">
-            {/* {total.toLocaleString()} */}
+            {total.toLocaleString()}
           </p>
         </div>
       </div>
