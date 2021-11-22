@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBudget, addExpenses } from '../../services/tipidSlice';
 import ViewItem from './ViewItem';
-import uuid from 'react-uuid';
 import { useSelector } from 'react-redux';
 
 function Form() {
@@ -11,13 +10,11 @@ function Form() {
   const dispatch = useDispatch();
 
   const [value, setValue] = useState({
-    id: uuid(),
     expense: '',
     description: '',
   });
 
   const [budget, setBudget] = useState({
-    id: uuid(),
     budget: '',
   });
 

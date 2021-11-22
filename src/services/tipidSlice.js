@@ -3,8 +3,12 @@ import { toast } from 'react-toastify';
 export const budgetSlice = createSlice({
   name: 'budget',
   initialState: {
-    expenses: [],
-    income: [],
+    expenses: localStorage.getItem('expenses')
+      ? JSON.parse(localStorage.getItem('expenses'))
+      : [],
+    income: localStorage.getItem('income')
+      ? JSON.parse(localStorage.getItem('income'))
+      : [],
     total: 0,
     budget: 0,
   },
@@ -14,7 +18,8 @@ export const budgetSlice = createSlice({
         toast.info('Budget cannot be less than 0');
         console.log('budget cannot be negative');
       }
-      return { ...state, income: [action.payload, ...state.income] };
+      state.income = [action.payload, ...state.income];
+      localStorage.setItem('income', JSON.stringify(state.income));
     },
 
     addExpenses: (state, action) => {
@@ -38,7 +43,8 @@ export const budgetSlice = createSlice({
         toast.info('Expense cannot be less than 0');
         console.log('budget cannot be negative');
       } else {
-        return { ...state, expenses: [action.payload, ...state.expenses] };
+        state.expenses = [action.payload, ...state.expenses];
+        localStorage.setItem('expenses', JSON.stringify(state.expenses));
       }
     },
 
@@ -91,12 +97,6 @@ export const budgetSlice = createSlice({
       return { ...state, expenses: [...expenses] };
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(addBudget, (state, action) => {
-
-  //     return { ...state, expenses: [action.payload, ...state.expenses] };
-  //   });
-  // },
 });
 
 export const {
