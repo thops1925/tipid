@@ -10,6 +10,10 @@ export const budgetSlice = createSlice({
   },
   reducers: {
     addBudget: (state, action) => {
+      if (action.payload.budget <= 0) {
+        toast.info('Budget cannot be less than 0');
+        console.log('budget cannot be negative');
+      }
       return { ...state, income: [action.payload, ...state.income] };
     },
 
@@ -30,6 +34,9 @@ export const budgetSlice = createSlice({
       if (action.payload.expense > state.budget) {
         console.log('lapas kana sa budget');
         toast.info('Over Budget');
+      } else if (action.payload.expense <= 0) {
+        toast.info('Expense cannot be less than 0');
+        console.log('budget cannot be negative');
       } else {
         return { ...state, expenses: [action.payload, ...state.expenses] };
       }
