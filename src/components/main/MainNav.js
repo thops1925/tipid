@@ -5,6 +5,7 @@ import {
   getTotalBudget,
   totalExpenses,
 } from '../../services/tipidSlice';
+import Calendar from './Calendar';
 import Form from './Form';
 
 function MainNav() {
@@ -30,6 +31,7 @@ function MainNav() {
       </div>
       <div className="mx-auto my-4">
         <p className="font-bold text-xl">Pag Budget Ambisyosa ta</p>
+        <Calendar />
 
         <div className="flex justify-between">
           <p className="text-gray-500">Total Balance</p>

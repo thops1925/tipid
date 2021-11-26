@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addBudget, addExpenses } from '../../services/tipidSlice';
 import ViewItem from './ViewItem';
 import { useSelector } from 'react-redux';
+import Calendar from './Calendar';
 
 function Form() {
   const item = useSelector((state) => state.budget.expenses);
@@ -78,7 +79,7 @@ function Form() {
               }
             }}
           >
-            <div className="flex space-x-4 h-14">
+            <div className="flex space-x-4 h-10">
               <input
                 type="number"
                 className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
@@ -90,7 +91,7 @@ function Form() {
                 value={value.expense}
               />
             </div>
-            <div className="flex space-x-4 h-14">
+            <div className="flex space-x-4 h-10">
               <input
                 type="text"
                 required
