@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
-    <div className=" bg-gray-100 h-screen overflow-hidden ">
+    <div className=" bg-gray-100 h-screen overflow-hidden  ">
       <ToastContainer />
       <MainNav />
     </div>

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 
 function Calendar() {
-  const [date, setDate] = useState(0);
-
-  console.log(date);
-
   const d = new Date();
+  const [date, setDate] = useState(d.getMonth());
+  console.log(date);
   const calendar = [
     'January',
     'February',
@@ -20,7 +18,16 @@ function Calendar() {
     'November',
     'December',
   ];
-  const month = calendar[d.getMonth() + date];
+
+  if (date > 11) {
+    setDate(0);
+  }
+  if (date < 0) {
+    setDate(11);
+  }
+
+  const current = calendar[date];
+
   return (
     <div className="flex  justify-center p-2">
       <div onClick={() => setDate(date - 1)} className="px-4">
@@ -40,7 +47,7 @@ function Calendar() {
         </svg>
       </div>
 
-      <div className="h-6 text-gray-900 ">{month}</div>
+      <div className="h-6 text-gray-900 ">{current}</div>
 
       <div onClick={() => setDate(date + 1)} className="px-4">
         <svg

@@ -52,13 +52,14 @@ function Form() {
           <div className="flex space-x-4 h-14">
             <input
               type="number"
-              className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
+              className="bg-transparent placeholder-black border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
               placeholder="Amount"
               onChange={(e) => setBudget({ ...budget, budget: e.target.value })}
               required
               value={budget.budget}
             />
           </div>
+          <div className="h-screen"></div>
         </form>
       ) : (
         <>
@@ -82,7 +83,7 @@ function Form() {
             <div className="flex space-x-4 h-10">
               <input
                 type="number"
-                className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
+                className="bg-transparent placeholder-black  border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
                 placeholder="Amount"
                 required
                 onChange={(e) =>
@@ -95,7 +96,7 @@ function Form() {
               <input
                 type="text"
                 required
-                className="bg-transparent border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
+                className="bg-transparent placeholder-black  border-b-2 w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
                 placeholder="Say buhaton nimo sa kwarta mii"
                 onChange={(e) =>
                   setValue({ ...value, description: e.target.value })
@@ -104,7 +105,9 @@ function Form() {
               />
             </div>
           </form>
-          <div className="lg:min-h-0 h-72 overflow-scroll mt-4 scrollbar-hide ">
+          <Calendar />
+
+          <div className="lg:min-h-0 h-80 overflow-scroll mt-4 scrollbar-hide pb-5">
             {item?.map((expense) => (
               <>
                 <ViewItem
