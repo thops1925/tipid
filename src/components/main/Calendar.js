@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Calendar({ setDate, date }) {
   // const [date, setDate] = useState(d.getMonth());
   console.log(date);
+
   const calendar = [
     'January',
     'February',
