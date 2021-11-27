@@ -24,7 +24,7 @@ function MainNav() {
   }, [income, dispatch]);
 
   return (
-    <div className="px-8 py-2 mx-auto sm:max-w-lg bg-pink-400">
+    <div className="px-8 py-2 mx-auto sm:max-w-lg bg-red-300">
       <div className="flex justify-center py-2 border-b-1">
         <h1 className="flex font-extrabold text-xl text-blue-900">WALDAS</h1>
       </div>
