@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-function Calendar() {
-  const d = new Date();
-  const [date, setDate] = useState(d.getMonth());
+function Calendar({ setDate, date }) {
+  // const [date, setDate] = useState(d.getMonth());
   console.log(date);
   const calendar = [
     'January',
@@ -47,7 +46,7 @@ function Calendar() {
         </svg>
       </div>
 
-      <div className="h-6 text-gray-900 ">{current}</div>
+      <div className="h-6 text-green-900 font-semibold ">{current}</div>
 
       <div onClick={() => setDate(date + 1)} className="px-4">
         <svg
