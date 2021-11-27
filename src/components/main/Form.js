@@ -30,17 +30,16 @@ function Form() {
     <div>
       <div className="flex space-x-4 h-14">
         <button
-          className="bg-transparent border-b-2 border-blue-900 font-bold text-indigo-800 w-full  py-1 px-2 leading-tight focus:outline-none"
-          onClick={() => setToggled(true)}
-        >
-          Budget
-        </button>
-
-        <button
-          className="bg-transparent border-b-2 font-bold text-indigo-800 border-blue-900 w-full py-1 px-2 leading-tight focus:outline-none"
+          className="bg-transparent border-b-2 font-bold  border-blue-900 w-full py-1 px-2 leading-tight focus:outline-none"
           onClick={() => setToggled(false)}
         >
           Expenses
+        </button>
+        <button
+          className="bg-transparent border-b-2 border-blue-900 font-bold  w-full  py-1 px-2 leading-tight focus:outline-none"
+          onClick={() => setToggled(true)}
+        >
+          Budget
         </button>
       </div>
 
@@ -60,7 +59,7 @@ function Form() {
           <div className="flex space-x-4 h-14">
             <input
               type="number"
-              className="bg-transparent placeholder-green-700 placeholder-font-bold border-b-2 border-blue-900 w-full px-2 leading-tight focus:outline-none"
+              className="bg-transparent placeholder-black placeholder-font-bold border-b-2 border-blue-900 w-full px-2 leading-tight focus:outline-none"
               placeholder="Amount"
               onChange={(e) => setBudget({ ...budget, budget: e.target.value })}
               required
@@ -93,7 +92,7 @@ function Form() {
             <div className="flex space-x-4 h-10">
               <input
                 type="number"
-                className="bg-transparent placeholder-green-700 placeholder-font-bold  border-b-2 border-blue-900 w-full  px-2 leading-tight focus:outline-none"
+                className="bg-transparent placeholder-black placeholder-font-bold  border-b-2 border-blue-900 w-full  px-2 leading-tight focus:outline-none"
                 placeholder="Amount"
                 required
                 onChange={(e) =>
@@ -106,7 +105,7 @@ function Form() {
               <input
                 type="text"
                 required
-                className=" bg-transparent placeholder-green-700 placeholder-text-bold border-b-2 border-blue-900 w-full  py-1 px-2 leading-tight focus:outline-none"
+                className=" bg-transparent placeholder-black placeholder-text-bold border-b-2 border-blue-900 w-full  py-1 px-2 leading-tight focus:outline-none"
                 placeholder="Say buhaton nimo sa kwarta mii"
                 onChange={(e) =>
                   setValue({ ...value, description: e.target.value })

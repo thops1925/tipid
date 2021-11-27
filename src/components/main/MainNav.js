@@ -33,14 +33,14 @@ function MainNav() {
 
         <div className="flex flex-row justify-center space-x-4">
           <div className="">
-            <p className="text-indigo-900 font-bold">Total Balance</p>
+            <p className=" font-bold">Total Balance</p>
             <p className="text-green-700 text-lg font-bold flex justify-center">
               {budget.toLocaleString()}
             </p>
           </div>
 
           <div className="">
-            <p className="text-indigo-900 font-bold">Total Expenses</p>
+            <p className=" font-bold">Total Expenses</p>
             <p className="text-red-600 text-lg font-bold flex justify-center">
               {total.toLocaleString()}
             </p>
